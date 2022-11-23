@@ -1,0 +1,37 @@
+{%extends 'main.html'%}
+
+{%block content%}
+<div class = "form form-group" >
+    {%block header%}<h1> Edit Student Data</h1>{%endblock%}
+
+    <form method = "POST"  >
+        {{ form.hidden_tag() }}
+    
+        {{form.idnumber.label(class = "form-label")}}
+        {{ form.idnumber(class = "form-control") }}
+        <br/>
+        {{form.fname.label(class = "form-label")}}
+        {{ form.fname(class = "form-control") }}
+        <br/>
+        {{form.mname.label(class = "form-label")}}
+        {{ form.mname(class = "form-control") }}
+        <br/>
+        {{form.lname.label(class = "form-label")}}
+        {{ form.lname(class = "form-control") }}
+        <br/>
+        {{form.gender.label(class = "form-label")}}
+        {{ form.gender(class = "form-select") }}
+        <br/>
+        {{form.yearlvl.label(class = "form-label")}}
+        {{ form.yearlvl(class = "form-select") }}
+        <br/>
+        {{form.course.label(class = "form-label")}}
+        {{ form.course(class = "form-select") }}
+    
+        <br/><br/>
+
+        <button type="reset" class = "btn btn-danger"> Cancel </button>
+        {{ form.submit(class = "btn btn-primary")}}
+    </form>
+</div>
+{%endblock%}

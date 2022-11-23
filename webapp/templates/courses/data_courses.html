@@ -1,0 +1,23 @@
+{%extends 'main.html'%}
+
+{%block content%}
+<div class = "form form-group">
+  {%block header%}<h1>Course Data</h1>{%endblock%}
+  
+    <form method="POST" action="/courses/">
+
+      {{ form.hidden_tag() }}
+
+      {{form.course.label(class = "form-label")}}
+      {{ form.course(class = "form-control") }}
+      <br/>
+      {{form.coursedesc.label(class = "form-label")}}
+      {{ form.coursedesc(class = "form-control") }}
+      <br/><br/>
+
+      <button type="reset" class = "btn btn-danger"> Cancel </button>
+      {{ form.submit(class = "btn btn-primary")}}
+
+      </form>
+</div>
+{%endblock%}s
