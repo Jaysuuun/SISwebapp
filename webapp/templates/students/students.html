@@ -1,0 +1,50 @@
+{%extends 'main.html'%}{%block title%}Student Data{%endblock title%}
+
+{%block content%}
+
+<div class="row">
+    <div class="newreg">
+        <a href={{ url_for ( 'students.data_students_page' ) }} class="btn btn-primary">New </a>
+        <div class = "search-container">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+</div>
+<div>
+        <div class="row mt-2">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>ID number</th>
+                    <th>First Name</th>
+                    <th>Middle Name</th>
+	                <th>Last Name</th>
+                    <th>Gender</th>
+                    <th>Year Level</th>
+                    <th>Course</th>
+	                <th></th>
+                </tr>
+	            </thead>
+	            <tbody>
+		        {% for student in student %}
+		            <tr>
+			            <td>{{student[0]}}</td>
+			            <td>{{student[1]}}</td>
+			            <td>{{student[2]}}</td>
+			            <td>{{student[3]}}</td>
+                        <td>{{student[4]}}</td>
+                        <td>{{student[5]}}</td>
+                        <td>{{student[6]}}</td>
+                        <td>
+                            <a href = {{ url_for('students.edit_students_page', idnumber = data.idnumber ) }} ><button  class="btn btn-warning" >Edit</button></a>
+                            <button class="btn btn-danger btn-delete" id="{{ student[0]}}">Delete</button>
+                        </td>
+		            </tr>
+		        {% endfor %}
+	            </tbody>
+            </table>
+        </div>
+
+</div>
+{%endblock content%}
