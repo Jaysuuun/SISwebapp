@@ -37,7 +37,7 @@
                         <td>{{student[5]}}</td>
                         <td>{{student[6]}}</td>
                         <td>
-                            <a href = {{ url_for('students.edit_students_page', idnumber = data.idnumber ) }} ><button  class="btn btn-warning" >Edit</button></a>
+                            <a href = {{ url_for('students.edit_students_page', idnumber = student.idnumber ) }} ><button  class="btn btn-warning" >Edit</button></a>
                             <button class="btn btn-danger btn-delete" id="{{ student[0]}}">Delete</button>
                         </td>
 		            </tr>

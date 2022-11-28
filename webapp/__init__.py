@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_mysqldb import MySQL
+from flask_mysqldb import MySQL,MySQLdb
 from config import DB_HOST,DB_PORT,DB_NAME,DB_USERNAME,DB_PASSWORD,SECRET_KEY #SQLALCHEMY_DATABASE_URI
 from flask_wtf.csrf import CSRFProtect
 

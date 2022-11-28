@@ -12,54 +12,52 @@ class Students(object):
         self.course = course
 
     def add(self):
-        cursor = mysql.connection.cursor()
+        curs = mysql.connection.cursor()
 
         sql = f"INSERT INTO data(idnumber,fname,mname,lname,gender,yearlvl,course) \
                 VALUES('{self.idnumber}','{self.fname}','{self.mname}','{self.lname}','{self.gender}','{self.yearlvl}','{self.course}')" 
 
-        cursor.execute(sql)
+        curs.execute(sql)
         mysql.connection.commit()
 
     @classmethod
     def all(cls):
-        cursor = mysql.connection.cursor()
-        sql = cursor.execute("SELECT * from data")
+        curs = mysql.connection.cursor()
+        sql = curs.execute("SELECT * from data")
         if sql > 0:
-            result = cursor.fetchall()
+            result = curs.fetchall()
         return result
 
     @classmethod
     def edit(cls, idnumber):
-        cursor = mysql.connection.cursor()
+        curs = mysql.connection.cursor()
         sql = f"SELECT * from data where STUDENTID = {idnumber}" 
-        cursor.execute(sql)
-        idnumber = cursor.fetch()
+        curs.execute(sql)
+        idnumber = curs.fetchall()
         return idnumber
 
     @classmethod
     def update(cls, idnumber):
         try:
-            cursor = mysql.connection.cursor()
+            curs = mysql.connection.cursor()
             sql = f"UPDATE from data where STUDENTID= {idnumber}"
-            cursor.execute(sql)
+            curs.execute(sql)
             mysql.connection.commit()
             return True
         except:
             return False
-
-
-
 
     @classmethod
     def delete(cls,id):
         try:
-            cursor = mysql.connection.cursor()
+            curs = mysql.connection.cursor()
             sql = f"DELETE from users where id= {id}"
-            cursor.execute(sql)
+            curs.execute(sql)
             mysql.connection.commit()
             return True
         except:
             return False
+        
 
 class Courses(object):
 
@@ -86,9 +84,10 @@ class Courses(object):
 
     @classmethod
     def populate(cls):
-        cursor = mysql.connection.cursor()
-
-        sql = f"SELECT COURSEID from courses"
-        cursor.execute(sql)
-        result = cursor.fetchall()
+        con = mysql.connection
+        curs = con.cursor()
+        sql = "SELECT COURSEID FROM courses"
+        curs.execute(sql)
+        result = [item[0] for item in curs.fetchall()]
         return result
+

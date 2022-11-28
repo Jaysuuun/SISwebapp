@@ -6,7 +6,7 @@ from webapp import mysql
 
 @student_bp.route('/students')
 @student_bp.route('/')
-@student_bp.route('/edit_students')
+@student_bp.route('/edit_students/')
 
 @student_bp.route('/')
 def students_page():
@@ -19,6 +19,7 @@ def data_students_page():
     form = StudentForm()
     if request.method == 'POST' and form.validate():
         students = models.Students(idnumber = form.idnumber, fname=form.fname, mname=form.mname,lname= form.lname, gender=form.gender, yearlvl= form.yearlvl, course=form.course)
+        form.course.choices = [(models.Courses.populate())]
         students.add()
         return redirect('/')
     else:
